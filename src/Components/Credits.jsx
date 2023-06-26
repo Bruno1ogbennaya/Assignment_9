@@ -2,28 +2,28 @@ import React, { useState } from 'react';
 import CreditsDisplay from './CreditsDisplay';
 
 function Credits() {
-  const [credits, setCredits] = useState([]);
-  const [creditDescription, setCreditDescription] = useState('');
-  const [creditAmount, setCreditAmount] = useState('');
+  const [credits, setCredits] = useState([]); // State for storing credits data
+  const [creditDescription, setCreditDescription] = useState(''); // State for credit description input
+  const [creditAmount, setCreditAmount] = useState(''); // State for credit amount input
 
   const addCredit = () => {
     const newCredit = {
-      description: creditDescription,
-      amount: Number(creditAmount),
-      date: new Date().toISOString().split('T')[0],
+      description: creditDescription, // Creating a new credit object with the entered description
+      amount: Number(creditAmount), // Converting the entered amount to a number
+      date: new Date().toISOString().split('T')[0], // Generating the current date and extracting only the date part
     };
 
-    const updatedCredits = [...credits, newCredit];
-    setCredits(updatedCredits);
+    const updatedCredits = [...credits, newCredit]; // Adding the new credit to the existing credits array
+    setCredits(updatedCredits); // Updating the credits state with the new array of credits
 
-    setCreditDescription('');
-    setCreditAmount('');
+    setCreditDescription(''); // Clearing the credit description input
+    setCreditAmount(''); // Clearing the credit amount input
   };
 
   const handleForm = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Preventing the default form submission behavior
 
-    addCredit();
+    addCredit(); // Calling the addCredit function to add a new credit
   };
 
   return (
